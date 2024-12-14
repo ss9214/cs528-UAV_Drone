@@ -1,6 +1,6 @@
 # Build files
-code/build/
-code/build/*
+new_code/build/
+new_code/build/*
 
 # Python virtual environment
 .venv/
@@ -8,12 +8,12 @@ venv/
 ENV/
 
 # CMake generated files / config files
-code/CMakeFiles/
-code/CMakeCache.txt
-code/cmake_install.cmake
-code/sdkconfig
-code/sdkconfig.old
-code/dependencies.lock
+new_code/CMakeFiles/
+new_code/CMakeCache.txt
+new_code/cmake_install.cmake
+new_code/sdkconfig
+new_code/sdkconfig.old
+new_code/dependencies.lock
 
 # Compiled files
 *.o
@@ -22,5 +22,5 @@ code/dependencies.lock
 *.dll
 *.exe
 
-# vscode specific files
-.vscode/
+# vsnew_code specific files
+.vsnew_code/
