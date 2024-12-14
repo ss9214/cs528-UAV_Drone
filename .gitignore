@@ -12,8 +12,6 @@ new_code/CMakeFiles/
 new_code/CMakeCache.txt
 new_code/cmake_install.cmake
 new_code/sdkconfig
-new_code/sdkconfig.old
-new_code/dependencies.lock
 
 # Compiled files
 *.o
@@ -22,5 +20,5 @@ new_code/dependencies.lock
 *.dll
 *.exe
 
-# vsnew_code specific files
+# vscode specific files
 .vscode/
