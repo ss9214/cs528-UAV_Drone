@@ -1,0 +1,26 @@
+# Build files
+code/build/
+code/build/*
+
+# Python virtual environment
+.venv/
+venv/
+ENV/
+
+# CMake generated files / config files
+code/CMakeFiles/
+code/CMakeCache.txt
+code/cmake_install.cmake
+code/sdkconfig
+code/sdkconfig.old
+code/dependencies.lock
+
+# Compiled files
+*.o
+*.so
+*.dylib
+*.dll
+*.exe
+
+# vscode specific files
+.vscode/
