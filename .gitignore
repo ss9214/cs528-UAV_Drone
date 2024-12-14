@@ -23,4 +23,4 @@ new_code/dependencies.lock
 *.exe
 
 # vsnew_code specific files
-.vsnew_code/
+.vscode/
