@@ -12,15 +12,15 @@ import serial.tools.list_ports
 
 features = []
 labels = []
-truncate = 400
-directions = ['left','right','up','down','forward','backward','turn_left','turn_right']
-
+truncate = 275
+#directions = ['left','right','up','down','forward','backward','turn_left','turn_right']
+directions = ['up','down']
 
 
 
 for k, direction in enumerate(directions):
-    for i in range(1,21):
-        df=pd.read_csv(f"./IMU_data/{direction}_{i:02}.csv",usecols=['acce_x', 'acce_y', 'acce_z', 'gyro_x', 'gyro_y', 'gyro_z'])
+    for i in range(1,81):
+        df=pd.read_csv(f"./csv_data/{direction}_{i:02}.csv",usecols=['acce_x', 'acce_y', 'acce_z', 'gyro_x', 'gyro_y', 'gyro_z'])
         data = df[['acce_x', 'acce_y', 'acce_z', 'gyro_x', 'gyro_y', 'gyro_z']].values[:truncate]
         data = (data - data.min(axis=0)) / (data.max(axis=0) - data.min(axis=0))
 
@@ -96,7 +96,8 @@ while True:
                 prediction = svm_classifier.predict([input_norm.flatten()])
                 
                 # Convert numeric prediction back to direction
-                directions = ['left','right','up','down','forward','backward','turn_left','turn_right']
+                #directions = ['left','right','up','down','forward','backward','turn_left','turn_right']
+                directions = ['up','down']
                 print(f"Predicted direction: {directions[prediction[0]]}")
             else:
                 print("Invalid data shape")
