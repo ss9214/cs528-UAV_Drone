@@ -48,25 +48,17 @@ print("Recording ...")
 #Drone Controls
 def control_drone(direction, magnitude=30):
     try:
+        tello = Tello()
         tello.connect()
         print("Drone connected.")
         print(f"Battery level: {tello.get_battery()}%")
 
-        # # Takeoff
-        # if keyboard.is_pressed('t'):
-        #     try:
-        #         print("Taking off...")
-        #         tello.takeoff()
-        #     except Exception as e:
-        #         print(f"Failed to take off: {e}")
-        # # Land
-        # elif keyboard.is_pressed('l'):
-        #     try:
-        #         print("Landing...")
-        #         tello.land()
-        #     except Exception as e:
-        #         print(f"Failed to land: {e}")
-            # Move up
+        # Takeoff
+        try:
+            print("Taking off...")
+            tello.takeoff()
+        except Exception as e:
+            print(f"Failed to take off: {e}")
         if direction == "up":
             try:
                 print("Moving up...")
@@ -145,8 +137,9 @@ def control_drone(direction, magnitude=30):
         tello.end()
 
 
+start_time = time.time()
 
-while True:
+while time.time()-start_time < 180:
     try:
         input = []
         while len(input) < 275:
