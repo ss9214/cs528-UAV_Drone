@@ -1,6 +1,6 @@
 # Build files
-new_code/build/
-new_code/build/*
+build/
+build/*
 
 # Python virtual environment
 .venv/
@@ -8,10 +8,10 @@ venv/
 ENV/
 
 # CMake generated files / config files
-new_code/CMakeFiles/
-new_code/CMakeCache.txt
-new_code/cmake_install.cmake
-new_code/sdkconfig
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+sdkconfig
 
 # Compiled files
 *.o
@@ -22,3 +22,6 @@ new_code/sdkconfig
 
 # vscode specific files
 .vscode/
+
+#Miscellaneous
+data/forward0

@@ -1,4 +1,4 @@
-# Install script for directory: /Users/raunakbandyopadhyay/esp/Assignment3/managed_components/espressif__mpu6050
+# Install script for directory: /Users/raunakbandyopadhyay/esp/cs528-UAV_Drone/managed_components/espressif__mpu6050
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

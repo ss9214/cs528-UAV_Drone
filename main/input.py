@@ -3,14 +3,12 @@ import pandas as pd
 from sklearn.svm import SVC
 import serial
 from time import sleep
-from djitellopy import Tello
-import keyboard
-import time
 
 # Function to load dataset
 def load_data():
 
-    directions = ["down","up","rightturn","leftturn","forward","backward","left","none"]
+    directions = ["down","up","rightturn","leftturn","forward","backward","left","right","none"]
+
     features = []
     labels = []
 
@@ -31,6 +29,8 @@ def load_data():
 
     return np.array(features), np.array(labels)
 
+
+
 #SVC Training
 print("Training ...")
 X, Y = load_data()
@@ -39,107 +39,14 @@ clf.fit(X, Y)
 print("Training Complete...")
 
 
-#Serial
-port = "/dev/tty.usbserial-10" 
+# #Serial
+
+port = "/dev/tty.usbserial-10"
 ser = serial.Serial(port, baudrate = 115200)
 print("Recording ...")
 
 
-#Drone Controls
-def control_drone(direction, magnitude=30):
-    try:
-        tello = Tello()
-        tello.connect()
-        print("Drone connected.")
-        print(f"Battery level: {tello.get_battery()}%")
-
-        # Takeoff
-        try:
-            print("Taking off...")
-            tello.takeoff()
-        except Exception as e:
-            print(f"Failed to take off: {e}")
-        if direction == "up":
-            try:
-                print("Moving up...")
-                tello.move_up(magnitude)
-            except Exception as e:
-                print(f"Failed to move up: {e}")
-        # Move down
-        elif direction == "down":
-            try:
-                print("Moving down...")
-                tello.move_down(magnitude)
-            except Exception as e:
-                print(f"Failed to move down: {e}")
-        # Move left
-        elif direction == "leftturn": #actually left
-            try:
-                print("Moving left...")
-                tello.move_left(magnitude)
-            except Exception as e:
-                print(f"Failed to move left: {e}")
-        # Move right
-        elif direction == "rightturn": #actually right
-            try:
-                print("Moving right...")
-                tello.move_right(magnitude)
-            except Exception as e:
-                print(f"Failed to move right: {e}")
-        # Move forward
-        elif direction == "forward":
-            try:
-                print("Moving forward...")
-                tello.move_forward(magnitude)
-            except Exception as e:
-                print(f"Failed to move forward: {e}")
-        # Move backward
-        elif direction == "backward":
-            try:
-                print("Moving backward...")
-                tello.move_back(magnitude)
-            except Exception as e:
-                print(f"Failed to move backward: {e}")
-        # Turn right
-        elif direction == "right": #actually turnright
-            try:
-                print("Rotating clockwise...")
-                tello.rotate_clockwise(90)
-            except Exception as e:
-                print(f"Failed to rotate clockwise: {e}")
-        # Turn left
-        elif direction == "left": #actually turnleft
-            try:
-                print("Rotating counter-clockwise...")
-                tello.rotate_counter_clockwise(90)
-            except Exception as e:
-                print(f"Failed to rotate counter-clockwise: {e}")
-        # Exit the loop
-        elif keyboard.is_pressed('q'):
-            try:
-                print("Exiting program...")
-                tello.land()
-            except Exception as e:
-                print(f"Failed to quit: {e}")
-            
-    except Exception as e:
-        print(f"an error occurred: {e}")
-        tello.land()
-
-    finally:
-        # Ensure the drone lands safely before exiting
-        print("Ensuring the drone is landed...")
-        try:
-            tello.land()
-        except Exception as e:
-            print(f"Error during landing: {e}")
-        
-        tello.end()
-
-
-start_time = time.time()
-
-while time.time()-start_time < 180:
+while True:
     try:
         input = []
         while len(input) < 275:
@@ -154,7 +61,7 @@ while time.time()-start_time < 180:
         predict = clf.predict([input])[0]
         conf_score = clf.predict_proba([input])[0].max()
         if predict != "none" and conf_score > 0.7:
-            control_drone(predict)
+            print(predict)
             sleep(1) #Buffer time to reset hand position
     except Exception as error:
         print(type(error).__name__)

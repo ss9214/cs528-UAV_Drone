@@ -1,4 +1,4 @@
-# Install script for directory: /Users/raunakbandyopadhyay/esp/Assignment3/main
+# Install script for directory: /Users/raunakbandyopadhyay/esp/cs528-UAV_Drone/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

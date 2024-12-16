@@ -10,18 +10,18 @@ if(NOT EXISTS "/Users/raunakbandyopadhyay/esp/esp-idf/components/bootloader/subp
   file(MAKE_DIRECTORY "/Users/raunakbandyopadhyay/esp/esp-idf/components/bootloader/subproject")
 endif()
 file(MAKE_DIRECTORY
-  "/Users/raunakbandyopadhyay/esp/Assignment3/build/bootloader"
-  "/Users/raunakbandyopadhyay/esp/Assignment3/build/bootloader-prefix"
-  "/Users/raunakbandyopadhyay/esp/Assignment3/build/bootloader-prefix/tmp"
-  "/Users/raunakbandyopadhyay/esp/Assignment3/build/bootloader-prefix/src/bootloader-stamp"
-  "/Users/raunakbandyopadhyay/esp/Assignment3/build/bootloader-prefix/src"
-  "/Users/raunakbandyopadhyay/esp/Assignment3/build/bootloader-prefix/src/bootloader-stamp"
+  "/Users/raunakbandyopadhyay/esp/cs528-UAV_Drone/build/bootloader"
+  "/Users/raunakbandyopadhyay/esp/cs528-UAV_Drone/build/bootloader-prefix"
+  "/Users/raunakbandyopadhyay/esp/cs528-UAV_Drone/build/bootloader-prefix/tmp"
+  "/Users/raunakbandyopadhyay/esp/cs528-UAV_Drone/build/bootloader-prefix/src/bootloader-stamp"
+  "/Users/raunakbandyopadhyay/esp/cs528-UAV_Drone/build/bootloader-prefix/src"
+  "/Users/raunakbandyopadhyay/esp/cs528-UAV_Drone/build/bootloader-prefix/src/bootloader-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "/Users/raunakbandyopadhyay/esp/Assignment3/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
+    file(MAKE_DIRECTORY "/Users/raunakbandyopadhyay/esp/cs528-UAV_Drone/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "/Users/raunakbandyopadhyay/esp/Assignment3/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "/Users/raunakbandyopadhyay/esp/cs528-UAV_Drone/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
 endif()
